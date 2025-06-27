@@ -1,22 +1,26 @@
-# Generative AI Text Completion App (GPT-3.5)
+# GPT-2 Text Generator (Hugging Face Local Model)
 
-This Python-based terminal application interacts with OpenAI’s GPT-3.5 model to generate text based on user input. It allows users to explore AI-generated completions using prompts of their choice, and supports multiple requests in a session. The app is useful for creative, educational, or experimental purposes.
+This is a simple Python application that uses the Hugging Face `transformers` library to load a local GPT-2 model (`openai-community/gpt2`) and generate text based on user-provided prompts. The app runs in the terminal and returns AI-generated responses using configurable generation settings.
 
-## Features
+---
 
-- Real-time interaction with OpenAI’s GPT-3.5
-- Handles multiple user prompts in one session
-- Includes basic input validation (e.g., prevents empty prompts)
-- Configurable temperature and max token settings
-- Lightweight and easy to run locally
+## ✨ Features
 
-## Setup
+- Uses a local Hugging Face GPT-2 model (no API key required)
+- Real-time prompt-based text generation
+- Adjustable `temperature` and `max_tokens` parameters
+- Interactive command-line interface
+- Includes basic input validation
+
+---
+
+## ⚙️ Setup Instructions
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/generative-ai-text-app.git
-cd generative-ai-text-app
+git clone https://github.com/your-username/gpt2-text-generator.git
+cd gpt2-text-generator
 ```
 
 ### 2. Create and Activate a Virtual Environment (Optional)
@@ -30,68 +34,58 @@ venv\Scripts\activate         # Windows
 ### 3. Install Dependencies
 
 ```bash
-pip install openai python-dotenv
+pip install transformers
 ```
 
-### 4. Add Your API Key
+> Note: The first time you run the script, the `openai-community/gpt2` model will automatically download from Hugging Face.
 
-1. Create a `.env` file in the project directory.
-2. Inside `.env`, add:
+---
 
-```
-OPENAI_API_KEY=your-api-key-here
-```
+## 🚀 Usage
 
-> 🔐 Keep this file private and never upload your API key to public repositories.
-
-## Usage
-
-To start the app:
+To run the app:
 
 ```bash
 python app.py
 ```
 
-You will be prompted to enter a message. After submitting a prompt, the app will return a generated response from GPT-3.5.
+### Example Session:
+```text
+Welcome to the GPT-2 Text Generator!
 
-To exit the app, type:
+Enter a prompt (or type 'exit' to quit): The future of AI is
+Generated Text:
+The future of AI is rapidly evolving, and it has the potential to...
+```
 
+To exit the application, type:
 ```
 exit
 ```
 
-## Example Prompts
+---
 
-Try any of these:
+## 🔧 Default Configuration
 
-- `Hello`
-- `Continue this story: Once upon a time...`
-- `Explain photosynthesis to a 10-year-old.`
-- `Write a haiku about the ocean.`
-- `Tell me about the history of the English language.`
+- **Model:** `openai-community/gpt2`
+- **Max Tokens:** 50
+- **Temperature:** 0.5  
+  (Higher values = more randomness; lower = more focused/predictable)
 
-## Default Settings
+These can be adjusted in the `generate_text()` function inside `app.py`.
 
-- **Model**: `gpt-3.5-turbo`
-- **Temperature**: `0.7`
-- **Max Tokens**: `100`
+---
 
-You can change these defaults directly in the `generate_response()` function in `app.py`.
+## 📋 Dependencies
 
-## Dependencies
+- `transformers` – Hugging Face library for accessing pretrained models
 
-- `openai`: Connects to the GPT-3.5 API
-- `python-dotenv`: Loads environment variables from the `.env` file
-
-Install both with:
+Install via:
 
 ```bash
-pip install openai python-dotenv
+pip install transformers
 ```
 
-## Limitations
+---
 
-- The model may generate off-topic, repetitive, or incorrect responses.
-- Responses can reflect biases present in training data.
-- Not suitable for critical use without human oversight.
-
+.
